@@ -1,2 +1,1 @@
-
-""" modeles module for managing ToDo items """
+"""modeles module for managing ToDo items"""

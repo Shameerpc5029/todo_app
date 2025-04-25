@@ -1,1 +1,1 @@
-""" db module for managing ToDo items """
+"""db module for managing ToDo items"""

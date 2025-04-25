@@ -10,6 +10,7 @@ from app.db.fake_db import todo_db
 
 router = APIRouter(prefix="/todos", tags=["todos"])
 
+
 @router.get("/", response_model=List[ToDoItem])
 def get_all_todos(completed: Optional[bool] = None) -> List[ToDoItem]:
     """
@@ -24,6 +25,7 @@ def get_all_todos(completed: Optional[bool] = None) -> List[ToDoItem]:
     if completed is None:
         return todo_db
     return [todo for todo in todo_db if todo.completed == completed]
+
 
 @router.get("/{todo_id}", response_model=ToDoItem)
 def get_todo(todo_id: int) -> ToDoItem:
@@ -44,6 +46,7 @@ def get_todo(todo_id: int) -> ToDoItem:
             return todo
     raise HTTPException(status_code=404, detail="ToDo not found")
 
+
 @router.post("/", response_model=ToDoItem)
 def create_todo(todo: ToDoItem) -> ToDoItem:
     """
@@ -62,6 +65,7 @@ def create_todo(todo: ToDoItem) -> ToDoItem:
         raise HTTPException(status_code=400, detail="ToDo with this ID already exists")
     todo_db.append(todo)
     return todo
+
 
 @router.delete("/{todo_id}")
 def delete_todo(todo_id: int) -> dict:

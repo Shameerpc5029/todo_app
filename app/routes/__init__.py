@@ -1,1 +1,1 @@
-""" manages the routes of the app """
+"""manages the routes of the app"""
